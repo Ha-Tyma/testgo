@@ -34,7 +34,7 @@ var albums = []Album{
 func main() {
 	router := gin.Default()
 	router.GET("/albums", getAlbums)
-	router.GET("/albums/:id", getAlbums)
+	router.GET("/albums/:id", getAlbum)
 	router.GET("/artists", getArtists)
 	router.GET("/artists/:id", getArtist)
 
