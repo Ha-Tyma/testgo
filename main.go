@@ -34,6 +34,7 @@ var albums = []Album{
 func main() {
 	router := gin.Default()
 	router.GET("/albums", getAlbums)
+	router.GET("/albums/:id", getAlbums)
 	router.GET("/artists", getArtists)
 	router.GET("/artists/:id", getArtist)
 
@@ -42,7 +43,7 @@ func main() {
 
 func getArtist(c *gin.Context) {
 	id := c.Param("id")
-	for _, a := range albums {
+	for _, a := range artists {
 		if a.ID == id {
 			c.IndentedJSON(http.StatusOK, a)
 		}
@@ -55,4 +56,13 @@ func getArtists(c *gin.Context) {
 
 func getAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, albums)
+}
+
+func getAlbum(c *gin.Context) {
+	id := c.Param("id")
+	for _, a := range albums {
+		if a.ID == id {
+			c.IndentedJSON(http.StatusOK, a)
+		}
+	}
 }
