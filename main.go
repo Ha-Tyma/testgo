@@ -33,12 +33,17 @@ var albums = []Album{
 
 func main() {
 	router := gin.Default()
+	router.GET("/", root)
 	router.GET("/albums", getAlbums)
 	router.GET("/albums/:id", getAlbum)
 	router.GET("/artists", getArtists)
 	router.GET("/artists/:id", getArtist)
 
-	router.Run(":8080")
+	router.Run(":80")
+}
+
+func root(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, "Webserver works!")
 }
 
 func getArtist(c *gin.Context) {
